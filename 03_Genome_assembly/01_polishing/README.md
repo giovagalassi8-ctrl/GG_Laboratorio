@@ -26,4 +26,15 @@ samtools index Anoste_raw_lr_sorted.bam
 rm Anoste_raw_lr.bam
 ```
 
-> [mapping.sh](./00_Assembly_raw/mapping.sh)
+### Hypo
+#### Mean coverage of short reads
+
+```bash
+mosdepth -n --fast-mode --by 500 Anoste_raw_sr Anoste_raw_sr_sorted.bam
+```
+
+#### Hypo
+```bash
+echo -e "$R1\n$R2" > Sr.Path
+hypo -d Anoste_raw.fasta -r @Sr.path -s <APPROXIMATE_GENOMESIZE> -c <SHORT_READSCOVERAGE> -b <SORTED_BAM_SR> -B <SORTED_BAM_PB> -t <NUMBER_THREADS>
+```
