@@ -1,4 +1,4 @@
-# Polishing
+ # Polishing
 
 ### Mapping short and long reads
 
@@ -26,4 +26,4 @@ samtools index Anoste_raw_lr_sorted.bam
 rm Anoste_raw_lr.bam
 ```
 
-> [mapping.sh](./mapping.sh)
+> [mapping.sh](./00_Assembly_raw/mapping.sh)
