@@ -24,5 +24,14 @@ assembly-stats Anoste_raw.fasta > Anoste_raw.stats
 
 #### Busco
 
+```bash
+export NUMEXPR_MAX_THREADS= 80
+busco -m geno -l $BUSCO/culicidae_odb12 -c 6 -o Anoste_raw.busco -i Anoste_raw.fasta
+```
 
+#### Spectra-cn (KAT)
+
+```bash
+kat comp -t 8 -o Anoste_pol 'SRR11672503_1_paired.fastq SRR11672503_2_fastq' Anoste_pol.fasta
+```
 -----
