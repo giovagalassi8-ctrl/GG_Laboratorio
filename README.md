@@ -4,7 +4,7 @@ This repository represents the pipeline developed for the the comparative genomi
 
 The repository contains:
 
-- [02_KmerBased_GenomeSurvey](./02_KmerBased_GenomeSurvey):
+- [02_KmerBased_GenomeSurvey](./02_KmerBased_GenomeSurvery):
 - [03_Genome_assembly](./03_Genome_assembly):
 - [04_Genome_annotation](./04_Genome_annotation): 
 - [05_OG.Inference_Phylogenomic](./05_OG.Inference_Phylogenomic):
