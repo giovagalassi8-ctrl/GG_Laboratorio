@@ -1,6 +1,6 @@
 # Comparative Genomics Lab 
 
-This repository represents the pipeline developed for the the comparative genomics course of Unibo. Here, we focus our attention on the mosquito family, Culicidae, many of which are vectors of disease pathogens (including well-known malaria) that have afflicted humans for centuries .
+This repository represents the pipeline developed for the the comparative genomics course of Unibo. Here, we focus our attention on the mosquito family, Culicidae, many of which are vectors of disease pathogens (including well-known [malaria](https://images.pexels.com/photos/18587652/pexels-photo-18587652/free-photo-of-a-smiling-african-man-with-a-big-smile.jpeg)) that have afflicted humans for centuries .
 
 The repository contains:
 
