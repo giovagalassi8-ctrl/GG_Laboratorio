@@ -1,10 +1,12 @@
 # Conda environment
 
-Most of the softwares used in this study are installed in different CONDA environments. To switch from one environment to another the command is as follows
+Most of the softwares used in this study are installed in different CONDA environments. To switch from one environment to another the command is as follows:
 
 ```bash
 conda activate <environment_name>
 ```
+
+This allows to "package" certain commands and make them independent of others.
 
 # Environment list
 
