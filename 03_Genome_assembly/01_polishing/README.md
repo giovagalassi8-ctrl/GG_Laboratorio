@@ -54,4 +54,4 @@ Upon completion, the process generates the file hypo_anoste_raw.fasta, which was
 
 ### Quality assessment of the polished assembly
 
-Finally, a quality control assessment of the polished assembly was conducted using the same methods described in section [00_Assembly_raw](../00_Assembly_raw): N50, BUSCO, and k-mer spectra analysis.
+Finally, a quality control assessment of the polished assembly was conducted using the same methods described in section [00_Assembly_raw](../00_Assembly_raw): N50, BUSCO, and Spectra-cn analysis.
