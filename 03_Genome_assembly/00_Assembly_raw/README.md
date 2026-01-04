@@ -6,37 +6,55 @@ The first step involves the contig-level assembly. A contig is defined as a cont
 
 #### Assembling reads
 
-
+Wtdbg2 was employed as the assembler; by leveraging long reads, it aims to produce a genome assembly that is as continuous as possible. 
 
 ```bash
+#[assembly]
 wtdbg2 -x rs -g 227054799 -t 8 -i SRR11672506.fastq.gz -fo Anoste_raw
 ```
 -----
 
 #### Final consensus in fasta format
 
+The process continued with the generation of the final consensus sequence in FASTA format. Following the initial genome assembly, the wtpoa-cns command is employed to enhance the accuracy of the assembled contigs.
+
 ```bash
+#[assembly]
 wtpoa-cns -t 7 -i Anoste_raw.ctg.lay.gz -fo Anoste_raw
 ```
 -----
 
 ### Quality check
 
+Three distinct methods were employed for quality assessment, which are described in the following sections.
+
 #### N50
+
+To assess assembly contiguity, we calculated the N50 metric, which represents the minimum contig length required to cover 50% of the assembly when considering all contigs in descending order of size.
+
 ```bash
+#[assembly]
 assembly-stats Anoste_raw.fasta > Anoste_raw.stats
 ```
 
 #### Busco
 
+After assessing assembly contiguity, the next step is to evaluate the gene content quality using BUSCO.
+
 ```bash
+#[sequence]
 export NUMEXPR_MAX_THREADS= 80
 busco -m geno -l $BUSCO/culicidae_odb12 -c 6 -o Anoste_raw.busco -i Anoste_raw.fasta
 ```
 
+N.B. Since BUSCO is not optimized for single-line FASTA files, it is essential to ensure that the input is in multi-line format.
+
 #### Spectra-cn (KAT)
 
+This method generates a plot comparing k-mer frequencies in the original reads against those in the assembled genome to estimate coverage.
+
 ```bash
+#[kat]
 kat comp -t 8 -o Anoste_pol 'SRR11672503_1_paired.fastq SRR11672503_2_fastq' Anoste_pol.fasta
 ```
 -----
