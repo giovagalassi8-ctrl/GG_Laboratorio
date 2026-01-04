@@ -1,6 +1,6 @@
 # Genome Assembly
 
-This section describes the genome assembly process.
+This section describes the genome assembly process. A genome assembly is a computational representation of a genomic sequence.
 
 ∎[Contig-level assembly](./00_Assembly_raw)
 
