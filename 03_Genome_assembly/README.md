@@ -8,4 +8,4 @@ This section describes the genome assembly process. A genome assembly is a compu
 
 ∎[Contaminants detection](./02_contaminants)
 
-∎[Reference-based scaffolding]
+∎[Reference-based scaffolding](./03_scaffolding)
