@@ -1,0 +1,3 @@
+Culpip,Culqui,Aedaeg,Aedalb -75.8
+Aedaeg,Aedalb -48.0
+Culpip,Culqui -3.15
