@@ -9,7 +9,7 @@ The repository contains:
 - [03_Genome_assembly](./03_Genome_assembly): how to assembly a genome.
 - [04_Genome_annotation](./04_Genome_annotation): 
 - [05_OG.Inference_Phylogenomic](./05_OG.Inference_Phylogenomic):
-- [06_](./):
+- [06_DivergenceTime_Estimation](./06_DivergenceTime_Estimation):
 - [07_](./):
 
 All the folders contain the scripts and the main input files needed to perfomed the passages described in the respective README files.
