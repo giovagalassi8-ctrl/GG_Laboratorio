@@ -16,3 +16,10 @@ The dating of the valid nodes, intended for the subsequent calibration, was comp
 taxon1,taxon2 -50
 taxon3,taxon4,taxon5 -100
 ```
+
+With all parameters established, the final tree calibration can now be performed.
+
+```bash
+#[time]
+iqtree -s ../05_OG.Inference_Phylogenomic/05_tree/conc_species_tree --date calibration.txt --date-tip 0 -o Anofun,Anoste -m Q.INSECT+F+I+R3 -nt 13 --prefix time_tree --date-options "-u 1"
+```
