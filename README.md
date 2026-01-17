@@ -11,6 +11,7 @@ The repository contains:
 - [05_OG.Inference_Phylogenomic](./05_OG.Inference_Phylogenomic):
 - [06_DivergenceTime_Estimation](./06_DivergenceTime_Estimation):
 - [07_GeneFamilies_Evolution](./07_GeneFamilies_Evolution):
-
+- [08_Selection](./08_Selection):
+- [09_GeneAnnotation_functional_enrichment](./09_GeneAnnotation_functional_enrichment):
 All the folders contain the scripts and the main input files needed to perfomed the passages described in the respective README files.
 
