@@ -62,6 +62,8 @@ The execution script for the two-lambda analysis is provided below:
 for k in {1..5}; do for n in {1..10}; do mkdir -p 00_2L/${k}K/${n}N; cafe5 -i GeneCount_ -t timetree.nwk -o 00_2L/${k}K/${n}N -y timetree_2Lambda.nwk -e./Error_model/Base_error_model.txt -k ${k}; done; done
 ```
 
+----
+
 ## Evolutionary Rate Analysis
 
 Once the gene family dynamics have been established, the next step is to characterize the specific genes and their evolutionary history. Various tools, such as CodeML and HyPhy, are available for this purpose.Both programs utilize the dN/dS ratio ($\omega$), a metric of natural selection acting on protein-coding sequences. The primary goal of this analysis is to identify signatures of positive selection that may be restricted to specific lineages (branches) or specific amino acid sites.
