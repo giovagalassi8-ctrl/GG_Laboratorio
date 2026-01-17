@@ -12,5 +12,6 @@ The repository contains:
 - [06_DivergenceTime_Estimation](./06_DivergenceTime_Estimation): Estimation of divergence times based on the reconstructed phylogeny.
 - [07_GeneFamilies_Evolution](./07_GeneFamilies_Evolution): Analysis of gene family expansion and contraction dynamics using CAFE.
 - [08_GeneAnnotation_functional_enrichment](./09_GeneAnnotation_functional_enrichment): Comprehensive functional annotation and evolutionary analysis. Includes GO term assignment, positive selection analysis (CodeML), and pathway analysis (KEGG).
+
 All the folders contain the scripts and the main input files needed to perfomed the passages described in the respective README files.
 
