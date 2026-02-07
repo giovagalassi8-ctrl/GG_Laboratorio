@@ -125,7 +125,7 @@ END {
 }' <(cut -f1,14 longest_giovanni.tsv) | grep -v "-" > go_back.tsv
 ```
 
-A filtering step was applied to the Gamma_asr.tre output to retain only significant gene families. Trees were extracted based on specific asterisk (*) combinations indicating significant expansions or contractions.
+A filtering step was applied to the Gamma_asr.tre (derived from the best-fitting model identified via AIC/BIC analysis: 00_2L/) output to retain only significant gene families. Trees were extracted based on specific asterisk (*) combinations indicating significant expansions or contractions.
 
 This operation resulted in three separate files, created by filtering the main tree file for different evolutionary scenarios using grep.
 
@@ -139,6 +139,6 @@ grep '<1>_' Gamma_asr.tre | grep '<2>_' | grep '<3>_' | grep '<4>_' | grep '<5>\
 
 The resulting files are:
 
-+ [OG_malaria.txt](../07_GeneFamilies_Evolution/CAFE_interesting_OG/OG_malaria.txt)
-+ [OG_dengue.txt](../07_GeneFamilies_Evolution/CAFE_interesting_OG/OG_dengue.txt)
-+ [OG_westnile.txt](../07_GeneFamilies_Evolution/CAFE_interesting_OG/OG_westnile.txt)
++ [OG_malaria.txt](../07_GeneFamilies_Evolution/CAFE_interesting_OG/OG_malaria.txt): Significance in Malaria Vectors
++ [OG_dengue.txt](../07_GeneFamilies_Evolution/CAFE_interesting_OG/OG_dengue.txt): Significance in Dengue Vectors
++ [OG_westnile.txt](../07_GeneFamilies_Evolution/CAFE_interesting_OG/OG_westnile.txt): Significance in West Nile Vectors
