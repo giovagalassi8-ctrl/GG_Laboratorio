@@ -145,7 +145,3 @@ paste --delimiters=$"\t" all_L.txt <(while IFS=$'\t' read -r L k; do echo "2*$k 
 This generates the [AIC_BIC.tsv](./AIC_BIC.tsv) file, which contains the best values from the 1-lambda and 2-lambda runs. Within the file, entries are sorted so that the first one represents the best-fitting model. In this case, it corresponds to 00_2L/2K.
  
 ----
-
-## Evolutionary Rate Analysis
-
-Once the gene family dynamics have been established, the next step is to characterize the specific genes and their evolutionary history. Various tools, such as CodeML and HyPhy, are available for this purpose. Both programs utilize the dN/dS ratio ($\omega$), a metric of natural selection acting on protein-coding sequences. The primary goal of this analysis is to identify signatures of positive selection that may be restricted to specific lineages (branches) or specific amino acid sites.
