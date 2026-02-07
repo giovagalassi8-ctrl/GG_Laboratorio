@@ -48,7 +48,7 @@ for k in {1..5}; do for n in {1..10}; do mkdir -p 00_1L/${k}K/${n}N; cafe5 -i Ge
 ```
 ----
 
-## Two-Lambda Analysis
+### Two-Lambda Analysis
 
 To allow for rate heterogeneity across the phylogeny, we performed a two-lambda analysis. This model assigns distinct turnover rates to specific lineages. To compute multiple $\lambda$ rates, you must define the number of distinct rate categories and assign them to specific species or clades.These assignments are specified in a separate tree file (distinct from the main ultrametric tree) passed via the -y flag. In this file, integers are used to map specific branches to their corresponding $\lambda$ category.
 
@@ -64,6 +64,88 @@ for k in {1..5}; do for n in {1..10}; do mkdir -p 00_2L/${k}K/${n}N; cafe5 -i Ge
 
 ----
 
+### Key Parameters
+
+- lambda: maximum-likelihood estimation of a global or local gene family evolutionary rates. Since the tree used is a time tree, branch lengths are in million of years, the value describe the turnover per gene per million years. With a reasonable evolution hypothesis, different species can be grouped into different lambdas.
+- gamma: even if all species could be described by the same λ, this does not mean that all gene families evolve at the same rate. Γ divides gene families into rate categories that share the same mean λ (based on how this parameter has been distributed). Reasonable values for gamma are between two and five.
+- alpha (present ony if gamma >= 2): defines the shape of the gamma distribution build around λ. Small α means that some gene families evolve very fast and others very slow, while big α the opposite.
+- epsilon (present ony if gamma >= 2): it represents the nunber of static families that do not show any turnover.
+
+----
+
+## Model Selection
+
+This project employs AIC and BIC to determine the optimal model.
+
+#### AIC (Akaike Information Criterion)
+AIC estimates the relative amount of information lost by a given model. It is generally preferred when the primary goal is prediction. A lower AIC value indicates a better model. Rewards models that fit the data well while penalizing unnecessary complexity.
+
+$$AIC = 2k - 2\ln(\hat{L})$$
+
+#### BIC (Bayesian Information Criterion)
+BIC penalizes model complexity (the number of parameters) more strictly than AIC, especially for large datasets. It is preferred when the goal is to identify the true underlying model or when a more parsimonious solution is desired.
+
+$$BIC = k\ln(n) - 2\ln(\hat{L})$$ 
+
+> $\hat{L}$ stands for Likelihood
+
+
+### Model estimation
+
+Likelihood values from all 10 technical replicates of the single-lambda CAFE run were extracted and saved to `sum_results.txt`. This procedure was repeated for each directory representing the 5 different Gamma values (ranging from 1K to 5K).
+
+ ```bash
+# The following command applies exclusively to the 1-Gamma analysis (Base_results.txt).
+for folder in */; do lnL=$(grep "lnL" ${folder}/Base_results.txt | grep -oE "[0-9]*([\.,][0-9]*)?"); L=$(grep "Lambda" ${folder}/Base_results.txt | grep -oE "[0-9]*\.[0-9]*"); E=$(grep "Epsilon" ${folder}/Base_results.txt | grep -oE "[0-9]*\.[0-9]*"); echo -e "$lnL\t$L\t$E" >> sum_results.tsv; done
+
+# The following command covers the remaining analyses for 2 to 5-Gamma categories (Gamma_results.txt)
+for i in */; do cd $i; for folder in */; do lnL=$(grep "lnL" ${folder}/Gamma_results.txt | grep -oE "[0-9]*([\.,][0-9]*)?"); L=$(grep "Lambda" ${folder}/Gamma_results.txt | grep -oE "[0-9]*\.[0-9]*"); E=$(grep "Epsilon" ${folder}/Gamma_results.txt | grep -oE "[0-9]*\.[0-9]*"); A=$(grep "Alpha" ${folder}/Gamma_results.txt | grep -oE "[0-9]*\.[0-9]*"); echo -e "$lnL\t$L\t$E\t$A" >> sum_results.tsv; done; cd ..; done
+```
+
+Upon completion of this step, the best likelihood values were extracted from each generated `sum_results.txt` file and consolidated into a new file named `all_L.txt`.
+```bash
+for f in */; do cut -f1 "$f"/sum_results.tsv | sort -n | head -n1; done > all_L.txt
+```
+
+The same procedure was also applied to the 2-lambda analysis.
+
+In all_L.txt files, the first likelihood value belongs to single-Gamma value run, the second to the run with two values, and so on. To perform the test, it is necessary to manually define the number of 'free parameters' for each run, which are determined by summing possible values assumed by Lambda and Gamma. 
+
+```bash
+00_1L/all_L.txt
+100007  2
+97485.3 3
+98129.7 4
+98290.9 5 
+98428.3 6
+
+00_2L/all_L.txt
+98345.6 3
+96613.3 4
+97170.6 5
+96840.9 6
+97544.1 7
+```
+
+It is also necessary to define natural logarithm ($\ln$) of trees' number reported in `Gamma_asr.tre` (or `Base_asr.tre`).
+
+```bash
+grep "OG" Gamma_asr.tre | wc -l 
+> 10526
+
+ln(10526) = 9.26
+```
+
+Finally, we perform the calculation of the two indicators, which will be carried out separately for both the `00_1L` and `00_2L` runs, to then compare them and choose the best-fitting model. 
+
+```bash
+paste --delimiters=$"\t" all_L.txt <(while IFS=$'\t' read -r L k; do echo "2*$k + 2*$L" | bc; done < all_L.txt) <(while IFS=$'\t' read -r L k; do echo "$k*9.21 + 2*$L" | bc; done < all_L.txt) | sort -k4,4n > AIC_BIC.tsv
+```
+
+This generates the [AIC_BIC.tsv](./AIC_BIC.tsv) file, which contains the best values from the 1-lambda and 2-lambda runs. Within the file, entries are sorted so that the first one represents the best-fitting model. In this case, it corresponds to
+ 
+----
+
 ## Evolutionary Rate Analysis
 
-Once the gene family dynamics have been established, the next step is to characterize the specific genes and their evolutionary history. Various tools, such as CodeML and HyPhy, are available for this purpose.Both programs utilize the dN/dS ratio ($\omega$), a metric of natural selection acting on protein-coding sequences. The primary goal of this analysis is to identify signatures of positive selection that may be restricted to specific lineages (branches) or specific amino acid sites.
+Once the gene family dynamics have been established, the next step is to characterize the specific genes and their evolutionary history. Various tools, such as CodeML and HyPhy, are available for this purpose. Both programs utilize the dN/dS ratio ($\omega$), a metric of natural selection acting on protein-coding sequences. The primary goal of this analysis is to identify signatures of positive selection that may be restricted to specific lineages (branches) or specific amino acid sites.
