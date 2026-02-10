@@ -32,7 +32,7 @@ Focusing exclusively on the paired reads obtained after trimming, we proceeded w
 
 ```bash
 #[kat]
-kat hist -t 8 -m 27 -o Anoste SRR11672503_1_paired_fastqc.html SRR11672503_2_paired_fastqc.html
+kat hist -t 8 -m 27 -o Anoste SRR11672503_1_paired.fastq SRR11672503_2_paired.fastq
 ```
 
 The primary results of interest are the Anoste.hist and Anoste.png files, both of which are located in this directory.
