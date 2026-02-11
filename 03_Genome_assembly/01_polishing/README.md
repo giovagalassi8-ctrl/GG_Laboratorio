@@ -37,7 +37,7 @@ The actual polishing is performed using [*HyPo*](https://github.com/kensung-lab/
 
 #### Mean coverage of short reads
 
-Mosdepth was used to obtain the missing coverage information required to proceed.
+[*Mosdepth*](https://github.com/brentp/mosdepth) was used to obtain the missing coverage information required to proceed.
 
 ```bash
 mosdepth -n --fast-mode --by 500 Anoste_raw_sr Anoste_raw_sr_sorted.bam
