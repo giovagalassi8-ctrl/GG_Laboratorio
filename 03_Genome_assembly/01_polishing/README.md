@@ -33,7 +33,7 @@ rm Anoste_raw_lr.bam
 
 ### Hypo
 
-The actual polishing is performed using HyPo; however, providing the short-read coverage information is a prerequisite for running the tool.
+The actual polishing is performed using [*HyPo*](https://github.com/kensung-lab/hypo); however, providing the short-read coverage information is a prerequisite for running the tool.
 
 #### Mean coverage of short reads
 
