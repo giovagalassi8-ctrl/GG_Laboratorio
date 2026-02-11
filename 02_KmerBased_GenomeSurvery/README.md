@@ -2,7 +2,7 @@
 
 ## Reads quality check
 
-We used *FastQC* to assess read quality. It is important to provide files in FASTA format.
+We used [*FastQC*](https://github.com/s-andrews/FastQC) to assess read quality. It is important to provide files in FASTA format.
 
 ```bash
 #[assembly]
