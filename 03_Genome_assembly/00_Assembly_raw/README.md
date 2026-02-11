@@ -6,7 +6,7 @@ The first step involves the contig-level assembly. A contig is defined as a cont
 
 #### Assembling reads
 
-Wtdbg2 was employed as the assembler; by leveraging long reads, it aims to produce a genome assembly that is as continuous as possible. 
+[*Wtdbg2*](https://github.com/ruanjue/wtdbg2) was employed as the assembler; by leveraging long reads, it aims to produce a genome assembly that is as continuous as possible. 
 
 ```bash
 #[assembly]
