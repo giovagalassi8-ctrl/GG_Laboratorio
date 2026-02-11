@@ -15,7 +15,7 @@ The *FastQC* results are provided as two .html files located in this directory.
 
 ## Trimming
 
-Trimming is used to discard sequence portions that do not meet the specified quality criteria.
+The trimming phase is performed to be able to discard sequence portions that do not meet the specified quality criteria.
 
 ```bash
 #[assembly]
