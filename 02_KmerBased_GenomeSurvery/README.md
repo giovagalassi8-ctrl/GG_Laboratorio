@@ -22,13 +22,13 @@ The trimming phase is performed to be able to discard sequence portions that do 
 trimmomatic PE -threads 8 -phred33 SRR11672503_1.fastq.gz SRR11672503_2.fastq.gz SRR11672503_1_paired.fastq SRR11672503_1_unpaired.fastq SRR11672503_2_paired.fastq SRR11672503_2_unpaired.fastq ILLUMINACLIP:/opt/miniforge3/envs/assembly/share/trimmomatic-0.40-0/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 2> stats_trimmomatic.log
 ```
 
-[Trimmomatic](https://github.com/usadellab/Trimmomatic) yields two output files for each sample: one containing paired reads and another for unpaired reads.
+[*Trimmomatic*](https://github.com/usadellab/Trimmomatic) yields two output files for each sample: one containing paired reads and another for unpaired reads.
 
 -----
 
 ## Compute *k-mer* frequency
 
-Focusing exclusively on the paired reads obtained after trimming, we proceeded with *KAT* to further investigate the raw assembly characteristics through k-mer analysis. Specifically, *KAT* utilizes k-mer distribution to provide key insights into the genome assembly.
+Focusing exclusively on the paired reads obtained after trimming, we proceeded with [*KAT*](https://github.com/EarlhamInst/KAT) to further investigate the raw assembly characteristics through k-mer analysis. Specifically, *KAT* utilizes k-mer distribution to provide key insights into the genome assembly.
 
 ```bash
 #[kat]
