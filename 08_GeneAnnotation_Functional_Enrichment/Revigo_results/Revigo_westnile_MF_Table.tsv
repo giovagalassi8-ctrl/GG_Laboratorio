@@ -1,0 +1,7 @@
+TermID	Name	Value	LogSize	Frequency	Uniqueness	Dispensability	Representative
+"GO:0001216"	"DNA-binding transcription activator activity"	NaN	5.053143774907218	0.2760123493399623	0.6183180494315385	0.65241287	null
+"GO:0001227"	"DNA-binding transcription repressor activity, RNA polymerase II-specific"	NaN	4.592132326020115	0.09547942589939323	0.6489174423177686	-0	null
+"GO:0001228"	"DNA-binding transcription activator activity, RNA polymerase II-specific"	NaN	5.013734401483973	0.252068615064028	0.5749536014970617	0.55630238	null
+"GO:0008236"	"serine-type peptidase activity"	NaN	5.7115280102272585	1.2569434753495055	0.5702168664594477	0.27928372	null
+"GO:0004252"	"serine-type endopeptidase activity"	NaN	5.552497871147506	0.8715358088510441	0.5736137058173015	0.94508101	8236
+"GO:0017171"	"serine hydrolase activity"	NaN	5.716654297264395	1.2718680122895538	0.793047877800948	0	null
