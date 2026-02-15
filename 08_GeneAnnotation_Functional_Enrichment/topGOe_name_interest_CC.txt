@@ -1,0 +1,8 @@
+GO.ID	Term	Annotated	Significant	Expected	Classic_Fisher
+GO:0000811	GINS complex	4	1	0.01	0.014
+GO:0005615	extracellular space	304	4	1.04	0.018
+GO:0008180	COP9 signalosome	6	1	0.02	0.02
+GO:0031261	DNA replication preinitiation complex	6	1	0.02	0.02
+GO:0000796	condensin complex	7	1	0.02	0.024
+GO:0005576	extracellular region	364	4	1.25	0.032
+GO:0000922	spindle pole	13	1	0.04	0.044

@@ -1,0 +1,27 @@
+GO.ID	Term	Annotated	Significant	Expected	Classic_Fisher
+GO:0006183	GTP biosynthetic process	1	1	0	0.0031
+GO:0008582	regulation of synaptic assembly at neuromuscular junction	1	1	0	0.0031
+GO:0000278	mitotic cell cycle	123	3	0.38	0.0058
+GO:0006048	UDP-N-acetylglucosamine biosynthetic process	2	1	0.01	0.0061
+GO:0097176	epoxide metabolic process	2	1	0.01	0.0061
+GO:0051295	establishment of meiotic spindle localization	2	1	0.01	0.0061
+GO:0010032	meiotic chromosome condensation	3	1	0.01	0.0092
+GO:1902315	nuclear cell cycle DNA replication initiation	5	1	0.02	0.0153
+GO:1902975	mitotic DNA replication initiation	5	1	0.02	0.0153
+GO:1902292	cell cycle DNA replication initiation	5	1	0.02	0.0153
+GO:0000055	ribosomal large subunit export from nucleus	5	1	0.02	0.0153
+GO:0007076	mitotic chromosome condensation	6	1	0.02	0.0183
+GO:0033750	ribosome localization	9	1	0.03	0.0274
+GO:0000054	ribosomal subunit export from nucleus	9	1	0.03	0.0274
+GO:1902969	mitotic DNA replication	9	1	0.03	0.0274
+GO:0006473	protein acetylation	10	1	0.03	0.0304
+GO:0030322	stabilization of membrane potential	10	1	0.03	0.0304
+GO:0006120	mitochondrial electron transport, NADH to ubiquinone	11	1	0.03	0.0334
+GO:1903047	mitotic cell cycle process	102	2	0.31	0.0384
+GO:0044786	cell cycle DNA replication	13	1	0.04	0.0393
+GO:0033260	nuclear DNA replication	13	1	0.04	0.0393
+GO:0015986	proton motive force-driven ATP synthesis	14	1	0.04	0.0423
+GO:0009145	purine nucleoside triphosphate biosynthetic process	16	2	0.05	0.0426
+GO:0009206	purine ribonucleoside triphosphate biosynthetic process	16	2	0.05	0.0426
+GO:0006754	ATP biosynthetic process	15	1	0.05	0.0452
+GO:0009201	ribonucleoside triphosphate biosynthetic process	18	2	0.06	0.0482
