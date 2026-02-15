@@ -148,7 +148,7 @@ The resulting files are:
 The functional enrichment analysis is performed in RStudio, utilizing the input files generated in the previous steps. The execution script is provided below:
 
 ```bash
-awk -F'\t' '{split($1,a,"_"); n=split($2,g,","); for(i=1;i<=n;i++) if(!seen[a[1],g[i]]++) out[a[1]=(out[a[1]]?out[a[1]]","g[i]:g[i])]} END{for(o in out) print o"\t"out[o]}' go_back.ts
+awk -F'\t' '{split($1,a,"_"); n=split($2,g,","); for(i=1;i<=n;i++) if(!seen[a[1],g[i]]++) out[a[1]]=(out[a[1]]?out[a[1]]","g[i]:g[i])} END{for(o in out) print o"\t"out[o]}' go_back.ts
 ```
 
 ```bash
