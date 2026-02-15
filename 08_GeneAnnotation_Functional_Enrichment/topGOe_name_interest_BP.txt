@@ -1,0 +1,6 @@
+GO.ID	Term	Annotated	Significant	Expected	Classic_Fisher
+GO:0007608	sensory perception of smell	67	1	0.01	0.012
+GO:0007606	sensory perception of chemical stimulus	78	1	0.01	0.014
+GO:0007600	sensory perception	81	1	0.01	0.015
+GO:0050877	nervous system process	86	1	0.02	0.016
+GO:0003008	system process	98	1	0.02	0.018
