@@ -1,0 +1,2 @@
+GO.ID	Term	Annotated	Significant	Expected	Classic_Fisher
+GO:0043186	P granule	6	1	0	0.0021

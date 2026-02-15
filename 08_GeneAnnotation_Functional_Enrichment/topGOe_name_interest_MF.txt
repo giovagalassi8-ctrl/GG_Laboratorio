@@ -1,0 +1,7 @@
+GO.ID	Term	Annotated	Significant	Expected	Classic_Fisher
+GO:0001227	DNA-binding transcription repressor activity, RNA polymerase II-specific	17	1	0.01	0.0066
+GO:0001228	DNA-binding transcription activator activity, RNA polymerase II-specific	35	1	0.01	0.0135
+GO:0001216	DNA-binding transcription activator activity	35	1	0.01	0.0135
+GO:0004252	serine-type endopeptidase activity	62	1	0.02	0.0239
+GO:0008236	serine-type peptidase activity	67	1	0.03	0.0258
+GO:0017171	serine hydrolase activity	92	1	0.04	0.0353

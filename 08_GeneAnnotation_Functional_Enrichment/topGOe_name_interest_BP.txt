@@ -1,0 +1,2 @@
+GO.ID	Term	Annotated	Significant	Expected	Classic_Fisher
+GO:0035194	regulatory ncRNA-mediated post-transcriptional gene silencing	5	1	0	0.0027
