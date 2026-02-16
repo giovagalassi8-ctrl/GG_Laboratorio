@@ -102,6 +102,7 @@ for prot in *.faa; do ID=$(basename -s .faa "$prot"); sed -i.old -E "s/>(rna-XM_
 OrthoFinder was employed to identify orthologous groups. The software identifies orthologs through a pipeline that searches for maximum sequence similarity to infer orthology. It utilizes a tree-based method, defining orthology through speciation events; consequently, it distinguishes between duplication events, which create paralogs, and speciation events, which result in orthologs, based on the reconstructed gene trees.
 
 ```bash
+#[orthofinder]
 orthofinder -t 8 -a 8 -f .
 ```
 
