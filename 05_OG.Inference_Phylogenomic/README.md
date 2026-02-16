@@ -113,6 +113,7 @@ The software generates a comprehensive output organized into several directories
 To refine the dataset, it was necessary to filter the orthogroups to remove paralogs. For this purpose, we utilized DISCO, which decomposes complex orthogroups into distinct, orthology-consistent sub-clusters. DISCO script requires a specific header syntax to properly work. Luckily, the supported syntax is the one we already implemented and used so far (SPECIES|SEQUENCE_ID).
 
 ```bash
+#[tree]
 while IFS=' ' read -r OG tree; do python3 ~/GG_Laboratorio/99_scripts/disco.py -i <(echo "$tree") -o ../../../01_disco/${OG/:/}.nwk -d "|" -m 4 --remove_in_paralogs --keep-labels --verbose >> ../../../01_disco/disco.log; done < <(sed -E 's/[A-Z][a-z]{5}_//g; s/\)n[0-9]*+/\)/g' Resolved_Gene_Trees.txt)
 ```
 
