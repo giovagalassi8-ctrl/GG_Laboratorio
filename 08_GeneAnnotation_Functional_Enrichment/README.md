@@ -145,6 +145,8 @@ The resulting files are:
 
 ### Enrichment Analysis
 
+#### topGO
+
 The functional enrichment analysis is performed in RStudio, utilizing the input files generated in the previous steps. The execution script is provided below:
 
 Prior to executing the R script, the functional annotation data underwent further formatting to ensure compatibility with the required input structure. Specifically, the go_back file was reformatted by collapsing all GOterms assigned to the same orthogroup into a single entry per line. 
@@ -235,6 +237,15 @@ topGO <- new("topGOdata", ontology="BP", allGenes=geneList, annot = annFUN.gene2
 print(intersect(genesInTerm(topGO, "GO:0051289")$'GO:0051289', notext_biggest$V1)) #to investigate which genes are annotated with a particular GO term
 ```
 
+The enrichment results are organized into three topGO folders, categorized by specific disease.
+
+The various files were formatted to ensure compatibility with REVIGO for the subsequent analysis step.
+
 ```bash
 for i in *; do cut -f1,6 $i >> final_revigo.tsv; done
 ```
+#### REVIGO
+
+Finally, we utilized REVIGO to visualize and summarize the functional enrichment results obtained from topGO. This tool allowed us to reduce the redundancy of the enriched Gene Ontology terms by clustering them based on semantic similarity, thereby facilitating the identification of the most representative biological themes.
+
+The REVIGO results are available in the [Revigo_results](./Revigo_results) folder.
