@@ -99,7 +99,7 @@ for prot in *.faa; do ID=$(basename -s .faa "$prot"); sed -i.old -E "s/>(rna-XM_
 
 ## Orthofinder
 
-OrthoFinder was employed to identify orthologous groups. The software identifies orthologs through a pipeline that searches for maximum sequence similarity to infer orthology. It utilizes a tree-based method, defining orthology through speciation events; consequently, it distinguishes between duplication events, which create paralogs, and speciation events, which result in orthologs, based on the reconstructed gene trees.
+[OrthoFinder](https://github.com/davidemms/OrthoFinder) was employed to identify orthologous groups. The software identifies orthologs through a pipeline that searches for maximum sequence similarity to infer orthology. It utilizes a tree-based method, defining orthology through speciation events; consequently, it distinguishes between duplication events, which create paralogs, and speciation events, which result in orthologs, based on the reconstructed gene trees.
 
 ```bash
 #[orthofinder]
@@ -110,7 +110,7 @@ The software generates a comprehensive output organized into several directories
 
 ## Paralog filtering
 
-To refine the dataset, it was necessary to filter the orthogroups to remove paralogs. For this purpose, we utilized DISCO, which decomposes complex orthogroups into distinct, orthology-consistent sub-clusters. DISCO script requires a specific header syntax to properly work. Luckily, the supported syntax is the one we already implemented and used so far (SPECIES|SEQUENCE_ID).
+To refine the dataset, it was necessary to filter the orthogroups to remove paralogs. For this purpose, we utilized [DISCO](https://github.com/JSdoubleL/DISCO), which decomposes complex orthogroups into distinct, orthology-consistent sub-clusters. DISCO script requires a specific header syntax to properly work. Luckily, the supported syntax is the one we already implemented and used so far (SPECIES|SEQUENCE_ID).
 
 ```bash
 #[tree]
@@ -191,7 +191,7 @@ The alignment process requires single-copy orthologs, which are located in the '
 ls *.fa | shuf -n 200 > species_tree_OG.txt
 ```
 
-At this stage, the MAFFT aligner can be executed to perform the multiple sequence alignment.
+At this stage, the [MAFFT](https://github.com/GSLBiotech/mafft) aligner can be executed to perform the multiple sequence alignment.
 
 ```bash
 #[sequence]
