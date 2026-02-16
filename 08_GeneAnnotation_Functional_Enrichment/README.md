@@ -147,9 +147,13 @@ The resulting files are:
 
 The functional enrichment analysis is performed in RStudio, utilizing the input files generated in the previous steps. The execution script is provided below:
 
+Prior to executing the R script, the functional annotation data underwent further formatting to ensure compatibility with the required input structure. Specifically, the go_back file was reformatted by collapsing all GOterms assigned to the same orthogroup into a single entry per line. 
+
 ```bash
 awk -F'\t' '{split($1,a,"_"); n=split($2,g,","); for(i=1;i<=n;i++) if(!seen[a[1],g[i]]++) out[a[1]]=(out[a[1]]?out[a[1]]","g[i]:g[i])} END{for(o in out) print o"\t"out[o]}' go_back.ts
 ```
+
+Then, the script was launched on RStudio
 
 ```bash
 library(tidyverse)
