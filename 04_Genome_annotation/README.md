@@ -8,7 +8,7 @@ Functional annotation involves assigning specific biological functions to nucleo
 Repetitive elements can significantly interfere with genome analysis, especially when focusing on the coding regions. The objective of this phase is to mask these elements, ensuring they are excluded from consideration by downstream annotation software.
 To achieve a high-quality annotation, it is recommended to use a transcriptome (or proteome) as a reference. This provides additional biological evidence, as it contains crucial information regarding isoform diversity.
 
-For a quick and dirty transposon annotation, we typically employ [RepeatModeler](https://github.com/Dfam-consortium/RepeatModeler) and [RepeatMasker](https://github.com/Dfam-consortium/RepeatMasker). Briefly, RepeatModeler identifies a set of consensus sequences representative of the repeats present in the genome. This library is then used by RepeatMasker to annotate the assembly.
+For a quick and dirty transposon annotation, we employ [RepeatModeler](https://github.com/Dfam-consortium/RepeatModeler) and [RepeatMasker](https://github.com/Dfam-consortium/RepeatMasker). Briefly, RepeatModeler identifies a set of consensus sequences representative of the repeats present in the genome. This library is then used by RepeatMasker to annotate the assembly.
 
 > Due to computational constraints, RepeatModeler has been pre-run, and the consensus library can be found at the following path: /home/PERSONALE/mirko.martini3/01_2024/00_Data/02_annotation/Anoste_RepeatModeler_library.fa
 
