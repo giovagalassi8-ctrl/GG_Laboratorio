@@ -35,6 +35,7 @@ While the program can immediately infer one or more birth-death parameters (lamb
 This statistical model describes the probability that the observed gene count in a family differs from the true count due to technical artifacts (such as genome assembly or annotation errors). The statistics derived from this model will be incorporated into subsequent analysis steps to ensure more accurate evolutionary inferences.
 
 ```bash
+#[tree]
 cafe5 -i GenCount_CAFE.tsv -t timetree.nwk -o Error_model -e
 ```
 
@@ -44,6 +45,7 @@ cafe5 -i GenCount_CAFE.tsv -t timetree.nwk -o Error_model -e
 Then we can run the program specifying the error model just inferred. An initial CAFE5 analysis was performed using a single $\lambda$ (lambda) parameter for the entire tree. This model assumes a uniform turnover rate, implying that the tendency for gene families to expand or contract remains constant across all species.
 
 ```bash
+#[tree]
 for k in {1..5}; do for n in {1..10}; do mkdir -p 00_1L/${k}K/${n}N; cafe5 -i GenCount_ -t timetree.nwk -o 00_1L/${k}K/${n}N -e./Error_model/Base_error_model.txt -k ${k}; done; done
 ```
 ----
@@ -59,6 +61,7 @@ To allow for rate heterogeneity across the phylogeny, we performed a two-lambda 
 The execution script for the two-lambda analysis is provided below:
 
 ```bash
+#[tree]
 for k in {1..5}; do for n in {1..10}; do mkdir -p 00_2L/${k}K/${n}N; cafe5 -i GeneCount_ -t timetree.nwk -o 00_2L/${k}K/${n}N -y timetree_2Lambda.nwk -e./Error_model/Base_error_model.txt -k ${k}; done; done
 ```
 
