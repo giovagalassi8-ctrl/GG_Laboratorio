@@ -55,6 +55,6 @@ This method generates a plot comparing k-mer frequencies in the original reads a
 
 ```bash
 #[kat]
-kat comp -t 8 -o Anoste_pol 'SRR11672503_1_paired.fastq SRR11672503_2_fastq' Anoste_pol.fasta
+kat comp -t 8 -o Anoste_pol 'SRR11672503_1_paired.fastq SRR11672503_2_paired.fastq' Anoste_pol.fasta
 ```
 -----
