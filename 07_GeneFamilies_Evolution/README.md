@@ -72,7 +72,7 @@ for k in {1..5}; do for n in {1..10}; do mkdir -p 00_2L/${k}K/${n}N; cafe5 -i Ge
 - lambda: maximum-likelihood estimation of a global or local gene family evolutionary rates. Since the tree used is a time tree, branch lengths are in million of years, the value describe the turnover per gene per million years. With a reasonable evolution hypothesis, different species can be grouped into different lambdas.
 - gamma: even if all species could be described by the same λ, this does not mean that all gene families evolve at the same rate. Γ divides gene families into rate categories that share the same mean λ (based on how this parameter has been distributed). Reasonable values for gamma are between two and five.
 - alpha (present ony if gamma >= 2): defines the shape of the gamma distribution build around λ. Small α means that some gene families evolve very fast and others very slow, while big α the opposite.
-- epsilon (present ony if gamma >= 2): it represents the nunber of static families that do not show any turnover.
+- epsilon (present ony if gamma >= 2): it represents the number of static families that do not show any turnover.
 
 ----
 
