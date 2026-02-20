@@ -33,7 +33,7 @@ while IFS=$'\t' read -r AN sname ID; do
 done < "$AN2name"
 ```
 
-## Longest isoform and translation
+### Longest isoform and translation
 
 Once the genomes have been downloaded, the raw data consists of nucleotide sequences. However, in comparative genomics, analyses are typically conducted at the amino acid level rather than using raw nucleotides. To perform this conversion, the AGAT toolkit is utilized. Specifically, once the script results are obtained, a for-cicle can be executed to process the files through this command.
 
@@ -51,7 +51,7 @@ for gff in *_longest.gff; do agat_sp_extract_sequences.pl -g "$gff" -f ../00_gen
 
 This second script is designed to extract CDS (Coding Sequence) features and translate them into proteins using the standard eukaryotic genetic code.
 
-## Removal of pseudogenes
+### Removal of pseudogenes
 
 Despite being reference-grade sequences, these genomes may still contain pseudogenes (defined here as any sequence containing internal premature stop codons). Consequently, these must be removed. The following script was employed for this purpose:
 
@@ -97,9 +97,11 @@ At this stage, the FASTA headers must be modified to ensure they are clear and f
 for prot in *.faa; do ID=$(basename -s .faa "$prot"); sed -i.old -E "s/>(rna-XM_[0-9]+\.[0-9]) (gene=gene-.[^ ]+) name=(.[^ ]+) .+$/ >${ID}\|\3/" "$prot"; done
 ```
 
+----
+
 ## Orthofinder
 
-[OrthoFinder](https://github.com/davidemms/OrthoFinder) was employed to identify orthologous groups. The software identifies orthologs through a pipeline that searches for maximum sequence similarity to infer orthology. It utilizes a tree-based method, defining orthology through speciation events; consequently, it distinguishes between duplication events, which create paralogs, and speciation events, which result in orthologs, based on the reconstructed gene trees.
+[*OrthoFinder*](https://github.com/davidemms/OrthoFinder) was employed to identify orthologous groups. The software identifies orthologs through a pipeline that searches for maximum sequence similarity to infer orthology. It utilizes a tree-based method, defining orthology through speciation events; consequently, it distinguishes between duplication events, which create paralogs, and speciation events, which result in orthologs, based on the reconstructed gene trees.
 
 ```bash
 #[orthofinder]
@@ -108,16 +110,18 @@ orthofinder -t 8 -a 8 -f .
 
 The software generates a comprehensive output organized into several directories, each containing specific types of evolutionary and genomic information.
 
+----
+
 ## Paralog filtering
 
-To refine the dataset, it was necessary to filter the orthogroups to remove paralogs. For this purpose, we utilized [DISCO](https://github.com/JSdoubleL/DISCO), which decomposes complex orthogroups into distinct, orthology-consistent sub-clusters. DISCO script requires a specific header syntax to properly work. Luckily, the supported syntax is the one we already implemented and used so far (SPECIES|SEQUENCE_ID).
+To refine the dataset, it was necessary to filter the orthogroups to remove paralogs. For this purpose, we utilized [*DISCO*](https://github.com/JSdoubleL/DISCO), which decomposes complex orthogroups into distinct, orthology-consistent sub-clusters. DISCO script requires a specific header syntax to properly work. Luckily, the supported syntax is the one we already implemented and used so far (SPECIES|SEQUENCE_ID).
 
 ```bash
 #[tree]
 while IFS=' ' read -r OG tree; do python3 ~/GG_Laboratorio/99_scripts/disco.py -i <(echo "$tree") -o ../../../01_disco/${OG/:/}.nwk -d "|" -m 4 --remove_in_paralogs --keep-labels --verbose >> ../../../01_disco/disco.log; done < <(sed -E 's/[A-Z][a-z]{5}_//g; s/\)n[0-9]*+/\)/g' Resolved_Gene_Trees.txt)
 ```
 
-> The disco.py script is available at the following [link](https://github.com/jsdoublel/DISCO/blob/master/disco.py)
+> The `disco.py` script is available at the following [link](https://github.com/jsdoublel/DISCO/blob/master/disco.py)
 
 To optimize computational resources and storage, empty DISCO output files (zero-size files) were identified and removed from the dataset.
 
@@ -179,9 +183,11 @@ done
 rm -f tmp_seqs.txt
 ```
 
+----
+
 ## Alignments and trimming
 
-Following DISCO, the pipeline requires multiple sequence alignment (MSA) and trimming. These steps are crucial because evolutionary analysis depends not just on orthology, but on establishing positional information to identify conserved and divergent sites.
+Following *DISCO*, the pipeline requires multiple sequence alignment (MSA) and trimming. These steps are crucial because evolutionary analysis depends not just on orthology, but on establishing positional information to identify conserved and divergent sites.
 
 ### Alignment
 
@@ -191,11 +197,18 @@ The alignment process requires single-copy orthologs, which are located in the '
 ls *.fa | shuf -n 200 > species_tree_OG.txt
 ```
 
-At this stage, the [MAFFT](https://github.com/GSLBiotech/mafft) aligner can be executed to perform the multiple sequence alignment.
+At this stage, the [*MAFFT*](https://github.com/GSLBiotech/mafft) aligner can be executed to perform the multiple sequence alignment.
 
 ```bash
 #[sequence]
-for OG in $(cat species_tree_OG.txt); do mafft --auto --anysymbol "$OG" > ../../../03_aligned/${OG/.fa/_aligned.faa}; done
+for OG in $(cat species_tree_OG.txt); do mafft --auto --anysymbol "$OG" > ../../../03_aligned/${OG/.faa/_aligned.faa}; done
+```
+
+To align every sequence obtained after DISCO, we used the following command line:
+
+```bash
+#[sequence]
+for OG in *.faa; do mafft --auto --anysymbol "$OG" > ../../../03_aligned/${OG/.faa/_aligned.faa}; done
 ```
 
 ### Trimming
@@ -209,6 +222,8 @@ for OG in *; do bmge -i "$OG" -t AA -m BLOSUM62 -e 0.5 -g 0.4 -of ../04_trimmed/
 
 > It is important to note that BMGE must be executed outside of any Conda environment to avoid dependency conflicts and ensure proper functionality.
 
+----
+
 ## Concatenation
 
 At this stage, all the individual sequences—already aligned and trimmed—from each orthogroup are merged into a single large-scale concatenation. This process was carried out using the [AMAS.py](https://github.com/marekborowiec/AMAS/blob/master/amas/AMAS.py) script, resulting in a supermatrix that represents the combined evolutionary signal of the dataset.
@@ -218,6 +233,8 @@ Before running AMAS.py, it is crucial to modify the FASTA headers so they contai
 sed -E 's/\|.+$//' * #Preliminary step to standardize headers for the subsequent concatenation process
 ~/GG_Laboratorio/99_scripts/AMAS.py concat -y nexus -i *.faa -f fasta -d aa -t conc_species_tree
 ```
+
+----
 
 ## Species tree reconstruction
 
