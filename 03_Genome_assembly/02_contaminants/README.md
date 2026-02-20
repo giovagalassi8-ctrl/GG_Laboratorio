@@ -12,7 +12,8 @@ samtools index Anoste_pol_sr_sorted.bam
 rm Anoste_pol_sr.bam
 ```
 In this case, the analysis involving long reads is no longer required.
-Second step is the taxonomic annotation of the contigs using blastn
+
+Second step is the taxonomic annotation of the contigs using `blastn`
 
 ```bash
 blastn -query <ASSEMBLY> -db <PATH/TO/nt/> -outfmt '6 qseqid staxids bitscore std sscinames sskingdoms stitle' -max_target_seqs 25 -max_hsps 1 -num_threads 25 -evalue 1e-25 -out <OUTFILE>
@@ -23,7 +24,7 @@ blastn -query <ASSEMBLY> -db <PATH/TO/nt/> -outfmt '6 qseqid staxids bitscore st
 
 ## Contaminants detection
 
-To identify potential contaminants, we utilized BlobTools. This software enables the analysis of genome assembly composition by integrating taxonomic classification with GC content and coverage metrics. Such visualization is instrumental in detecting exogenous sequences or assembly artifacts.
+To identify potential contaminants, we utilized [*BlobTools*](https://github.com/DRL/blobtools). This software enables the analysis of genome assembly composition by integrating taxonomic classification with GC content and coverage metrics. Such visualization is instrumental in detecting exogenous sequences or assembly artifacts.
 
 ```bash
 #[sequence]
@@ -31,9 +32,9 @@ blobtools create -i Anoste_pol.fasta -b Anoste_pol_sorted.bam -t Anoste_blast.ts
 blobtools view -i Anoste_blob.blobDB.json -o Anoste
 blobtools plot -i Anoste_blob.blobDB.json -o Anoste
 ```
-> The .json file is generated as the output of the initial blobtools create command.
+> The `.json file` is generated as the output of the initial `blobtools create` command.
 
-At this stage, the primary output of interest is the _table.txt file; from this file, we aim to retain only the records that specify the target taxonomy—Arthropoda—in the third column.
+At this stage, the primary output of interest is the `_table.txt` file; from this file, we aim to retain only the records that specify the target taxonomy—Arthropoda—in the third column.
 
 ```bash
 grep 'Arthropoda' Anoste.Anoste_blob.blobDB_table.txt | column -t -s $'\t' | less`
