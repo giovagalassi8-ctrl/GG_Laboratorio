@@ -2,7 +2,7 @@
 
 ## CAFE 
 
-CAFE is one of the most widely used software tools based on gene and species trees. Its primary purpose is to analyze changes in gene family sizes, accounting for phylogenetic history to provide a statistical foundation for evolutionary inferences.
+*CAFE* is one of the most widely used software tools based on gene and species trees. Its primary purpose is to analyze changes in gene family sizes, accounting for phylogenetic history to provide a statistical foundation for evolutionary inferences.
 
 The program employs a birth-and-death process to model gene gain and loss across a user-specified phylogenetic tree. The distribution of family sizes generated under this model serves as a baseline to assess the statistical significance of observed size differences among taxa. In brief, CAFE estimates the ancestral states of gene families by comparing the tip states (extant family sizes) across the phylogeny.
 
@@ -10,11 +10,11 @@ The program employs a birth-and-death process to model gene gain and loss across
 
 ### Data Preparation
 
-CAFE requires two main inputs: the ultrametric tree (generated in the previous section) and a gene count table. The table must be formatted as follows:
+*CAFE* requires two main inputs: the ultrametric tree (generated in the previous section) and a gene count table. The table must be formatted as follows:
 NONE Orthogroup ID ID ID ID
 NONE OG0000000  93 0  5  9 
 
-OrthoFinder generates a similar table, located in the results folder as Orthogroups.GeneCount.tsv. However, this file requires preprocessing to match CAFE's input format:
+*OrthoFinder* generates a similar table, located in the results folder as `Orthogroups.GeneCount.`. However, this file requires preprocessing to match CAFE's input format:
 
 -The first column required by CAFE is missing.
 
@@ -42,7 +42,7 @@ cafe5 -i GenCount_CAFE.tsv -t timetree.nwk -o Error_model -e
 ----
 
 ### Single-Lambda Analysis
-Then we can run the program specifying the error model just inferred. An initial CAFE5 analysis was performed using a single $\lambda$ (lambda) parameter for the entire tree. This model assumes a uniform turnover rate, implying that the tendency for gene families to expand or contract remains constant across all species.
+Then we can run the program specifying the error model just inferred. An initial *CAFE* analysis was performed using a single $\lambda$ (lambda) parameter for the entire tree. This model assumes a uniform turnover rate, implying that the tendency for gene families to expand or contract remains constant across all species.
 
 ```bash
 #[tree]
@@ -78,15 +78,15 @@ for k in {1..5}; do for n in {1..10}; do mkdir -p 00_2L/${k}K/${n}N; cafe5 -i Ge
 
 ## Model Selection
 
-This project employs AIC and BIC to determine the optimal model.
+This project employs *AIC* and *BIC* to determine the optimal model.
 
 #### AIC (Akaike Information Criterion)
-AIC estimates the relative amount of information lost by a given model. It is generally preferred when the primary goal is prediction. A lower AIC value indicates a better model. Rewards models that fit the data well while penalizing unnecessary complexity.
+*AIC* estimates the relative amount of information lost by a given model. It is generally preferred when the primary goal is prediction. A lower AIC value indicates a better model. Rewards models that fit the data well while penalizing unnecessary complexity.
 
 $$AIC = 2k - 2\ln(\hat{L})$$
 
 #### BIC (Bayesian Information Criterion)
-BIC penalizes model complexity (the number of parameters) more strictly than AIC, especially for large datasets. It is preferred when the goal is to identify the true underlying model or when a more parsimonious solution is desired.
+*BIC* penalizes model complexity (the number of parameters) more strictly than AIC, especially for large datasets. It is preferred when the goal is to identify the true underlying model or when a more parsimonious solution is desired.
 
 $$BIC = k\ln(n) - 2\ln(\hat{L})$$ 
 
@@ -145,6 +145,6 @@ Finally, we perform the calculation of the two indicators, which will be carried
 paste --delimiters=$"\t" all_L.txt <(while IFS=$'\t' read -r L k; do echo "2*$k + 2*$L" | bc; done < all_L.txt) <(while IFS=$'\t' read -r L k; do echo "$k*9.21 + 2*$L" | bc; done < all_L.txt) | sort -k4,4n > AIC_BIC.tsv
 ```
 
-This generates the [AIC_BIC.tsv](./AIC_BIC.tsv) file, which contains the best values from the 1-lambda and 2-lambda runs. Within the file, entries are sorted so that the first one represents the best-fitting model. In this case, it corresponds to `00_2L/2K`.
+This generates the [AIC_BIC.tsv](./Model_selection/AIC_BIC.tsv) file, which contains the best values from the 1-lambda and 2-lambda runs. Within the file, entries are sorted so that the first one represents the best-fitting model. In this case, it corresponds to `00_2L/2K`.
  
 ----
