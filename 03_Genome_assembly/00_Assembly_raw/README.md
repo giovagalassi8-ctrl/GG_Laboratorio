@@ -55,4 +55,7 @@ We used *Spectra-cn* method to generate a plot comparing k-mer frequencies in th
 #[kat]
 kat comp -t 8 -o Anoste_pol 'SRR11672503_1_paired.fastq SRR11672503_2_paired.fastq' Anoste_pol.fasta
 ```
+
+If the result of KAT is similar to that of GenomeScope, then this is already a first indication that the process is going well.
+
 -----
