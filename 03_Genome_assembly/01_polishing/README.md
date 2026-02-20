@@ -49,6 +49,7 @@ mosdepth -n --fast-mode --by 500 Anoste_raw_sr Anoste_raw_sr_sorted.bam
 echo -e "$R1\n$R2" > Sr.Path
 hypo -d Anoste_raw.fasta -r @Sr.path -s 227m -c 136 -b Anoste_raw_sr_sorted.bam -B Anoste_raw_lr_sorted.bam -t 6
 ```
+> `-s` is the approximate genome size, taken from GenomeScope.
 > `@Sr.path` is a file that contains the paths of the reads (pasted with `echo` command).
 
 Upon completion, the process generates the file hypo_anoste_raw.fasta, which was subsequently renamed to anoste_pol.fasta.
