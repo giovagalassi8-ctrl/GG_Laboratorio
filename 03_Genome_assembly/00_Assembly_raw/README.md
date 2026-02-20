@@ -38,7 +38,7 @@ assembly-stats Anoste_raw.fasta > Anoste_raw.stats
 
 #### Busco
 
-To evaluate the gene content quality, we used *BUSCO*, which compares the assembly against a pre-compiled dataset of genes expected to be present in the studied organism. Busco was run in genotypic version.
+To evaluate the gene content quality, we used *BUSCO*, which compares the assembly against a pre-compiled dataset of genes expected to be present in the studied organism. Busco was run in nucleotide version.
 
 ```bash
 #[sequence]
