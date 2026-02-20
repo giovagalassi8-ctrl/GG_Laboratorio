@@ -3,7 +3,7 @@
 ### Mapping short and long reads
 
 The first step in the read polishing process is mapping, a procedure in which reads are realigned to a specific assembly. This allows us to determine the positioning of short reads on the assembly and evaluate their alignment accuracy.
-The mapping process is performed using a script based on the minimap2 command, and it is applied to both short and long reads.
+The mapping process is performed using a script based on the `minimap2` command, and it is applied to both short and long reads.
 
 #### Mapping short reads
 
@@ -49,12 +49,13 @@ mosdepth -n --fast-mode --by 500 Anoste_raw_sr Anoste_raw_sr_sorted.bam
 echo -e "$R1\n$R2" > Sr.Path
 hypo -d Anoste_raw.fasta -r @Sr.path -s 227m -c 136 -b Anoste_raw_sr_sorted.bam -B Anoste_raw_lr_sorted.bam -t 6
 ```
+> `@Sr.path` is a file that contains the paths of the reads (pasted with `echo` command).
 
 Upon completion, the process generates the file hypo_anoste_raw.fasta, which was subsequently renamed to anoste_pol.fasta.
 
 ### Quality assessment of the polished assembly
 
-Finally, a quality control assessment of the polished assembly was conducted using the same methods described in section [00_Assembly_raw](../00_Assembly_raw): N50, BUSCO, and Spectra-cn analysis.
+Finally, a quality control assessment of the polished assembly was conducted using the same methods described in section [00_Assembly_raw](../00_Assembly_raw/README.md): N50, BUSCO, and Spectra-cn analysis.
 
 ```bash
 #[assembly]
