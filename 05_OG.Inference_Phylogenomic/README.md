@@ -213,7 +213,7 @@ for OG in *.faa; do mafft --auto --anysymbol "$OG" > ../../../03_aligned/${OG/.f
 
 ### Trimming
 
-The pipeline continues with trimming using BMGE, which enhances alignment quality by identifying and removing poorly aligned regions. This software employs an entropy-based approach to filter out non-informative sites. The objective of this phase is to clean the dataset and eliminate sequences that appear erroneous or misaligned following the alignment process.
+The pipeline continues with trimming using *BMGE*, which enhances alignment quality by identifying and removing poorly aligned regions. This software employs an entropy-based approach to filter out non-informative sites. The objective of this phase is to clean the dataset and eliminate sequences that appear erroneous or misaligned following the alignment process.
  
 ```bash
 conda deactivate 
@@ -227,7 +227,7 @@ for OG in *; do bmge -i "$OG" -t AA -m BLOSUM62 -e 0.5 -g 0.4 -of ../04_trimmed/
 ## Concatenation
 
 At this stage, all the individual sequences—already aligned and trimmed—from each orthogroup are merged into a single large-scale concatenation. This process was carried out using the [AMAS.py](https://github.com/marekborowiec/AMAS/blob/master/amas/AMAS.py) script, resulting in a supermatrix that represents the combined evolutionary signal of the dataset.
-Before running AMAS.py, it is crucial to modify the FASTA headers so they contain only the species name. This is because the script uses the header as a key to match sequences across different orthogroups, concatenating all sequences with the same identifier into a single taxonomic entry.
+Before running `AMAS.py`, it is crucial to modify the FASTA headers so they contain only the species name. This is because the script uses the header as a key to match sequences across different orthogroups, concatenating all sequences with the same identifier into a single taxonomic entry.
 
 ```bash
 sed -E 's/\|.+$//' * #Preliminary step to standardize headers for the subsequent concatenation process
@@ -238,7 +238,7 @@ sed -E 's/\|.+$//' * #Preliminary step to standardize headers for the subsequent
 
 ## Species tree reconstruction
 
-All necessary inputs are now available to initiate the phylogenetic analysis for the species tree reconstruction. In this study, we employed IQ-TREE, utilizing the concatenated sequences as the primary dataset for the inference.
+All necessary inputs are now available to initiate the phylogenetic analysis for the species tree reconstruction. In this study, we employed *IQ-TREE*, utilizing the concatenated sequences as the primary dataset for the inference.
 
 ```bash
 #[tree]
