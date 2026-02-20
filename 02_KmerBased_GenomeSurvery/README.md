@@ -38,4 +38,4 @@ kat hist -t 8 -m 27 -o Anoste SRR11672503_1_paired.fastq SRR11672503_2_paired.fa
 
 The acronym `Anoste` was used to refer to *Anopheles stephensi*, the species whose genome was assembled and annotated in the study
 The primary results of interest are the `Anoste.hist` and `Anoste.png` files, both of which are located in this [folder](./KAT_results).
-`Anoste.hist` was uploaded to [GenomeScope](http://genomescope.org/genomescope2.0/) for evaluation.
+`Anoste.hist` was uploaded to [GenomeScope](http://genomescope.org/genomescope2.0/) for evaluation: the obtained graph represents the coverage of kmers on the genome.
