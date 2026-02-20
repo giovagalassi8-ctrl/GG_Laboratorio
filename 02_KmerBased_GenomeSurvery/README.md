@@ -9,7 +9,7 @@ We used [*FastQC*](https://github.com/s-andrews/FastQC) to assess read quality. 
 fastqc SRR11672503_1.fastq.gz SRR11672503_2.fastq.gz
 ```
 
-The *FastQC* results are provided as two .html files located in this directory.
+The *FastQC* results are provided as two .html files located in this [folder](./FastQC_results).
 
 -----
 
@@ -29,10 +29,12 @@ trimmomatic PE -threads 8 -phred33 SRR11672503_1.fastq.gz SRR11672503_2.fastq.gz
 ## Compute *k-mer* frequency
 
 Focusing exclusively on the paired reads obtained after trimming, we proceeded with [*KAT*](https://github.com/EarlhamInst/KAT) to further investigate the raw assembly characteristics through k-mer analysis. Specifically, *KAT* utilizes k-mer distribution to provide key insights into the genome assembly.
+We used a k-mer size of 27.
 
 ```bash
 #[kat]
 kat hist -t 8 -m 27 -o Anoste SRR11672503_1_paired.fastq SRR11672503_2_paired.fastq
 ```
 
-The primary results of interest are the Anoste.hist and Anoste.png files, both of which are located in this directory.
+The acronym `Anoste` was used to refer to *Anopheles stephensi*, the species whose genome was assembled and annotated in the study
+The primary results of interest are the `Anoste.hist` and `Anoste.png` files, both of which are located in this [folder](./KAT_results).
