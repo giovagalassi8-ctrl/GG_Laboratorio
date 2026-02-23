@@ -158,6 +158,8 @@ awk -F'\t' '{split($1,a,"_"); n=split($2,g,","); for(i=1;i<=n;i++) if(!seen[a[1]
 Then, the script was launched on RStudio
 
 ```bash
+#!/usr/bin/env Rscript
+
 library(tidyverse)
 library(topGO)
 
